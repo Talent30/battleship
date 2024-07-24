@@ -1,3 +1,4 @@
+import type { GameCellState } from "@/utilities/types";
 import { use } from "react";
 import { GameContext, GameDispatchContext } from "@/provider/game-context";
 import { shipsAccordionSet } from "@/utilities/constants";
@@ -11,7 +12,7 @@ function getCellState({
   isFired: boolean;
   isHit: boolean;
   isSunk: boolean;
-}) {
+}): GameCellState {
   if (isSunk) {
     return "sunk" as const;
   }
