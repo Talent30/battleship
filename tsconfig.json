@@ -54,7 +54,11 @@
       {
         "name": "next"
       }
-    ]
+    ],
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./*"]
+    },
   },
   "include": [".", ".next/types/**/*.ts"],
   "exclude": [

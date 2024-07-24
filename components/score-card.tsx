@@ -4,9 +4,10 @@ import { tv } from "tailwind-variants";
 const scoreCard = tv({
   slots: {
     card: "text-center py-5 w-full",
-    layout: "grid gap-y-3",
-    scoreText: "text-5xl font-black text-foreground px-6",
-    playerText: "text-2xl font-black text-foreground px-6",
+    layout: "grid gap-y-2",
+    scoreText: "text-3xl md:text-5xl  font-black text-foreground px-6",
+    playerText:
+      "text-xl md:text-2xl whitespace-nowrap font-black text-foreground px-6",
     divider: "border-t-foreground mx-2",
   },
   variants: {
