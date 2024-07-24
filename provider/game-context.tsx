@@ -14,7 +14,9 @@ type GameState = {
   readonly sunkShipParts: Set<string>;
 };
 
-type ActionType = { type: "fire"; firedPosition: { x: number; y: number } };
+type ActionType =
+  | { type: "fire"; firedPosition: { x: number; y: number } }
+  | { type: "resetGame" };
 
 export const GameContext = createContext<GameState | undefined>(undefined);
 export const GameDispatchContext = createContext<
@@ -57,6 +59,9 @@ function gameReducer(gameState: GameState, action: ActionType) {
         hitParts: newHitParts,
         sunkShipParts: newSunkShipParts,
       };
+    }
+    case "resetGame": {
+      return initialGameState;
     }
     default: {
       throw new Error("Unknown action");
