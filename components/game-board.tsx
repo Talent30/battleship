@@ -1,4 +1,7 @@
+import { stringifyAccordion } from "@/utilities/helpers";
+
 import { colSize, rowSize } from "../utilities/constants";
+import { GameCell } from "./game-cell";
 
 export function GameBoard() {
   return (
@@ -6,11 +9,7 @@ export function GameBoard() {
       {Array.from({ length: colSize }).map((_col, x) => {
         return Array.from({ length: rowSize }).map((_row, y) => {
           return (
-            <div
-              key={`${x.toString()},${y.toString()}`}
-              id={`${x.toString()},${y.toString()}`}
-              className="border border-border"
-            />
+            <GameCell key={stringifyAccordion({ x, y })} accordion={{ x, y }} />
           );
         });
       })}

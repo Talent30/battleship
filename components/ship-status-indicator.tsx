@@ -1,3 +1,4 @@
+import type { ShipType } from "@/utilities/types";
 import type { ReactNode } from "react";
 import Image from "next/image";
 import battleShip from "@/app/assets/Battleship Shape.png";
@@ -8,8 +9,6 @@ import hit from "@/app/assets/Hit small.png";
 import part from "@/app/assets/Miss small.png";
 import submarine from "@/app/assets/Submarine Shape.png";
 import { shipTypes } from "@/utilities/constants";
-
-type ShipType = keyof typeof shipTypes;
 
 const shipIconStyle = "w-20 sm:w-24 aspect-auto";
 

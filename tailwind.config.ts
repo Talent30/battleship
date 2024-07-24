@@ -13,6 +13,7 @@ const config = {
         border: "var(--border)",
         green: "var(--green)",
         yellow: "var(--yellow)",
+        red: "rgb(var(--red) / <alpha-value>)",
       },
     },
   },

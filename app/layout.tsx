@@ -3,6 +3,8 @@ import localFont from "next/font/local";
 
 import "./globals.css";
 
+import { GameContextProvider } from "@/provider/game-context";
+
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
   variable: "--font-geist-sans",
@@ -30,7 +32,9 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <main className="py-0 sm:py-5 md:py-10">
-          <div className="mx-auto max-w-5xl sm:px-6 lg:px-8">{children}</div>
+          <div className="mx-auto max-w-5xl sm:px-6 lg:px-8">
+            <GameContextProvider>{children}</GameContextProvider>
+          </div>
         </main>
       </body>
     </html>

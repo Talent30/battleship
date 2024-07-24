@@ -1,7 +1,9 @@
+import { stringifyAccordion } from "./helpers";
+
 export const rowSize = 10;
 export const colSize = 10;
 
-export const { layout: layoutInfo, shipTypes } = {
+export const { layout: shipInfo, shipTypes } = {
   shipTypes: {
     carrier: { size: 5, count: 1 },
     battleship: { size: 4, count: 1 },
@@ -54,3 +56,9 @@ export const { layout: layoutInfo, shipTypes } = {
     },
   ],
 } as const;
+
+export const shipsAccordionSet = new Set(
+  shipInfo.flatMap((ship) =>
+    ship.positions.map(([x, y]) => stringifyAccordion({ x, y })),
+  ),
+);
