@@ -23,8 +23,7 @@ export function GameCell({
   accordion: { x: number; y: number };
 }) {
   const { gameCellState, setFire } = useCellState({ x, y });
-  const hoverStyle =
-    gameCellState === "empty" ? "hover:bg-red hover:bg-opacity-30" : "";
+  const hoverStyle = gameCellState === "empty" ? "hover:bg-gray-200" : "";
 
   // If a boat is sunk show the cell as red
   const sunkStyle = gameCellState === "sunk" ? "bg-red bg-opacity-30" : "";
