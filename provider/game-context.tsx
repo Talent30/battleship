@@ -45,7 +45,7 @@ function gameReducer(gameState: GameState, action: ActionType) {
       // Do the search once instead of doing it everytime for each cell
       const newSunkShipCoordinates = getSunkShipCoordinates({
         shipInfo,
-        hitParts: newfiredCoordinates,
+        firedCoordinates: newfiredCoordinates,
       });
 
       return {

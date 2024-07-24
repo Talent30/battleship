@@ -6,16 +6,16 @@ export function stringifyCoordinates({ x, y }: { x: number; y: number }) {
 
 export function getSunkShipCoordinates({
   shipInfo,
-  hitParts,
+  firedCoordinates,
 }: {
   shipInfo: ShipInfo;
-  hitParts: Set<string>;
+  firedCoordinates: ReadonlySet<string>;
 }) {
   const sunkPartsSet = new Set<string>();
 
   for (const { positions } of shipInfo) {
     const result = positions.every(([x, y]) =>
-      hitParts.has(stringifyCoordinates({ x, y })),
+      firedCoordinates.has(stringifyCoordinates({ x, y })),
     );
 
     if (result) {
@@ -28,11 +28,14 @@ export function getSunkShipCoordinates({
   return sunkPartsSet;
 }
 
-export function areSetsEqual<T>(a: Set<T>, b: Set<T>) {
+export function areSetsEqual<T>(a: ReadonlySet<T>, b: ReadonlySet<T>) {
   return a.size === b.size && [...a].every((value) => b.has(value));
 }
 
-export function isSuperset<T>(superSet: Set<T>, subSet: Set<T>) {
+export function isSuperset<T>(
+  superSet: ReadonlySet<T>,
+  subSet: ReadonlySet<T>,
+) {
   for (const element of subSet) {
     if (!superSet.has(element)) {
       return false;
