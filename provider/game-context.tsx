@@ -4,7 +4,7 @@ import type { Dispatch, ReactNode } from "react";
 import { createContext, useReducer } from "react";
 import { shipInfo, shipsAccordionSet } from "@/utilities/constants";
 import {
-  getSunkShipPartsAccordion,
+  getSunkShipPartsAccordions,
   stringifyAccordion,
 } from "@/utilities/helpers";
 
@@ -47,9 +47,9 @@ function gameReducer(gameState: GameState, action: ActionType) {
         ? new Set([...gameState.hitParts, fireAccordion])
         : gameState.hitParts;
 
-      // If the positions of a ship are a subset of hit parts, mark the ship as sunk and save the positions
+      // If the positions of a ship are the subset of hit parts, mark the ship as sunk and save the positions
       // Do the search once instead of doing it everytime for each cell
-      const newSunkShipParts = getSunkShipPartsAccordion({
+      const newSunkShipParts = getSunkShipPartsAccordions({
         shipInfo,
         hitParts: newHitParts,
       });

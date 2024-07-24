@@ -4,7 +4,7 @@ export function stringifyAccordion({ x, y }: { x: number; y: number }) {
   return `${x.toString()},${y.toString()}`;
 }
 
-export function getSunkShipPartsAccordion({
+export function getSunkShipPartsAccordions({
   shipInfo,
   hitParts,
 }: {

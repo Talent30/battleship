@@ -6,7 +6,7 @@ export function useShipPartState({ x, y }: { x: number; y: number }) {
   const gameState = use(GameContext);
   if (gameState === undefined) {
     throw new Error(
-      "useCellState hook needs to be used within GameContextProvider",
+      "useShipPartState hook needs to be used within GameContextProvider",
     );
   }
 
