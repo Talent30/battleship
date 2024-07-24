@@ -10,16 +10,12 @@ export default function Home() {
           <ScoreCard playerName="player 1" color="yellow" />
           <ScoreCard playerName="player 2" color="green" />
         </div>
-        <div className="grid w-full grid-cols-2 gap-x-2 md:grid-cols-1">
-          <div className="space-y-1">
-            <ShipStatusIndicator shipType="carrier" />
-            <ShipStatusIndicator shipType="battleship" />
-            <ShipStatusIndicator shipType="cruiser" />
-          </div>
-          <div className="space-y-1">
-            <ShipStatusIndicator shipType="submarine" />
-            <ShipStatusIndicator shipType="destroyer" />
-          </div>
+        <div className="grid w-full grid-cols-2 grid-rows-3 gap-x-2 md:grid-cols-1">
+          <ShipStatusIndicator shipType="carrier" />
+          <ShipStatusIndicator shipType="battleship" />
+          <ShipStatusIndicator shipType="cruiser" />
+          <ShipStatusIndicator shipType="submarine" />
+          <ShipStatusIndicator shipType="destroyer" />
         </div>
       </div>
       <div className="basis-full md:basis-4/6">

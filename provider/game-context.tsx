@@ -45,7 +45,8 @@ function gameReducer(gameState: GameState, action: ActionType) {
         ? new Set([...gameState.hitParts, fireAccordion])
         : gameState.hitParts;
 
-      // If the positions of a ship are a subset of firedPosition, mark the ship as sunk and save the positions
+      // If the positions of a ship are a subset of hit parts, mark the ship as sunk and save the positions
+      // Do the search once instead of doing it everytime for each cell
       const newSunkShipParts = getSunkShipPartsAccordion({
         shipInfo,
         hitParts: newHitParts,
