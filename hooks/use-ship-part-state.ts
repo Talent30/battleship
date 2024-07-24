@@ -15,7 +15,7 @@ export function useShipPartState({ x, y }: { x: number; y: number }) {
     y,
   });
 
-  const isHit = gameState.hitParts.has(partCoordinates);
+  const isHit = gameState.firedCoordinates.has(partCoordinates);
 
   return { isHit };
 }

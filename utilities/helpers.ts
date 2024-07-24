@@ -31,3 +31,12 @@ export function getSunkShipCoordinates({
 export function areSetsEqual<T>(a: Set<T>, b: Set<T>) {
   return a.size === b.size && [...a].every((value) => b.has(value));
 }
+
+export function isSuperset<T>(superSet: Set<T>, subSet: Set<T>) {
+  for (const element of subSet) {
+    if (!superSet.has(element)) {
+      return false;
+    }
+  }
+  return true;
+}

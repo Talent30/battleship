@@ -2,7 +2,7 @@
 
 import type { Dispatch, ReactNode } from "react";
 import { createContext, useReducer } from "react";
-import { shipInfo, shipsCoordinatesSet } from "@/utilities/constants";
+import { shipInfo } from "@/utilities/constants";
 import {
   getSunkShipCoordinates,
   stringifyCoordinates,
@@ -10,7 +10,6 @@ import {
 
 type GameState = {
   readonly firedCoordinates: Set<string>;
-  readonly hitParts: Set<string>;
   readonly sunkShipCoordinates: Set<string>;
 };
 
@@ -25,7 +24,6 @@ export const GameDispatchContext = createContext<
 
 const initialGameState = {
   firedCoordinates: new Set(),
-  hitParts: new Set(),
   sunkShipCoordinates: new Set(),
 } satisfies GameState;
 
@@ -43,20 +41,15 @@ function gameReducer(gameState: GameState, action: ActionType) {
         firecoordinates,
       ]);
 
-      const newHitParts = shipsCoordinatesSet.has(firecoordinates)
-        ? new Set([...gameState.hitParts, firecoordinates])
-        : gameState.hitParts;
-
       // If the positions of a ship are the subset of hit parts, mark the ship as sunk and save the positions
       // Do the search once instead of doing it everytime for each cell
       const newSunkShipCoordinates = getSunkShipCoordinates({
         shipInfo,
-        hitParts: newHitParts,
+        hitParts: newfiredCoordinates,
       });
 
       return {
         firedCoordinates: newfiredCoordinates,
-        hitParts: newHitParts,
         sunkShipCoordinates: newSunkShipCoordinates,
       };
     }

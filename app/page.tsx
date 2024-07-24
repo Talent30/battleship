@@ -1,6 +1,7 @@
 import { GameBoard } from "@/components/game-board";
 import { ScoreCard } from "@/components/score-card";
 import { ShipStatusIndicator } from "@/components/ship-status-indicator";
+import { shipInfo } from "@/utilities/constants";
 
 export default function Home() {
   return (
@@ -11,11 +12,9 @@ export default function Home() {
           <ScoreCard playerName="player 2" color="green" />
         </div>
         <div className="grid w-full grid-cols-2 grid-rows-3 gap-x-2 gap-y-1 md:grid-cols-1 md:gap-y-2">
-          <ShipStatusIndicator shipType="carrier" />
-          <ShipStatusIndicator shipType="battleship" />
-          <ShipStatusIndicator shipType="cruiser" />
-          <ShipStatusIndicator shipType="submarine" />
-          <ShipStatusIndicator shipType="destroyer" />
+          {shipInfo.map(({ ship }) => (
+            <ShipStatusIndicator key={ship} shipType={ship} />
+          ))}
         </div>
       </div>
       <div className="basis-full md:basis-4/6">
