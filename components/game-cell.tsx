@@ -5,7 +5,6 @@ import Image from "next/image";
 import hitMark from "@/app/assets/Hit.png";
 import missMark from "@/app/assets/Miss.png";
 import { useCellState } from "@/hooks/use-cell-state";
-import { stringifyCoordinates } from "@/utilities/helpers";
 
 function CellMark({ gameCellState }: { gameCellState: GameCellState }) {
   if (gameCellState === "hit" || gameCellState === "sunk") {
@@ -27,9 +26,9 @@ export function GameCell({
 
   // If a boat is sunk show the cell as red
   const sunkStyle = gameCellState === "sunk" ? "bg-red bg-opacity-30" : "";
+
   return (
     <button
-      id={stringifyCoordinates({ x, y })}
       onClick={() => {
         setFire({ x, y });
       }}

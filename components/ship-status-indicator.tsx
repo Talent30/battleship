@@ -10,7 +10,7 @@ import { shipInfo } from "@/utilities/constants";
 
 import { ShipPart } from "./ship-part";
 
-const shipIconStyle = "w-20 sm:w-24 aspect-auto";
+const shipIconStyle = "w-20 sm:w-22 md:w-24 aspect-auto";
 
 const shipIcon = {
   battleship: (
@@ -59,7 +59,7 @@ export function ShipStatusIndicator({ shipType }: { shipType: ShipType }) {
   return (
     <span className="flex items-center justify-start gap-x-2">
       {shipIcon[shipType]}
-      <span className="flex md:gap-x-2">
+      <span className="flex md:gap-y-2">
         {shipInfo
           .find(({ ship }) => ship === shipType)
           ?.positions.map(([x, y], index) => (

@@ -10,7 +10,7 @@ export default function Home() {
           <ScoreCard playerName="player 1" color="yellow" />
           <ScoreCard playerName="player 2" color="green" />
         </div>
-        <div className="grid w-full grid-cols-2 grid-rows-3 gap-x-2 md:grid-cols-1">
+        <div className="grid w-full grid-cols-2 grid-rows-3 gap-x-2 gap-y-1 md:grid-cols-1 md:gap-y-2">
           <ShipStatusIndicator shipType="carrier" />
           <ShipStatusIndicator shipType="battleship" />
           <ShipStatusIndicator shipType="cruiser" />
