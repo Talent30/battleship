@@ -2,20 +2,20 @@
 
 import type { Dispatch, ReactNode } from "react";
 import { createContext, useReducer } from "react";
-import { shipInfo, shipsAccordionSet } from "@/utilities/constants";
+import { shipInfo, shipsCoordinatesSet } from "@/utilities/constants";
 import {
-  getSunkShipPartsAccordions,
-  stringifyAccordion,
+  getSunkShipCoordinates,
+  stringifyCoordinates,
 } from "@/utilities/helpers";
 
 type GameState = {
-  readonly firedPosition: Set<string>;
+  readonly firedCoordinates: Set<string>;
   readonly hitParts: Set<string>;
-  readonly sunkShipParts: Set<string>;
+  readonly sunkShipCoordinates: Set<string>;
 };
 
 type ActionType =
-  | { type: "fire"; firedPosition: { x: number; y: number } }
+  | { type: "fire"; firedCoordinates: { x: number; y: number } }
   | { type: "resetGame" };
 
 export const GameContext = createContext<GameState | undefined>(undefined);
@@ -24,40 +24,40 @@ export const GameDispatchContext = createContext<
 >(undefined);
 
 const initialGameState = {
-  firedPosition: new Set(),
+  firedCoordinates: new Set(),
   hitParts: new Set(),
-  sunkShipParts: new Set(),
+  sunkShipCoordinates: new Set(),
 } satisfies GameState;
 
 function gameReducer(gameState: GameState, action: ActionType) {
   switch (action.type) {
     case "fire": {
-      const fireAccordion = stringifyAccordion({
-        x: action.firedPosition.x,
-        y: action.firedPosition.y,
+      const firecoordinates = stringifyCoordinates({
+        x: action.firedCoordinates.x,
+        y: action.firedCoordinates.y,
       });
 
       // Set can handle dedupe
-      const newFiredPosition = new Set([
-        ...gameState.firedPosition,
-        fireAccordion,
+      const newfiredCoordinates = new Set([
+        ...gameState.firedCoordinates,
+        firecoordinates,
       ]);
 
-      const newHitParts = shipsAccordionSet.has(fireAccordion)
-        ? new Set([...gameState.hitParts, fireAccordion])
+      const newHitParts = shipsCoordinatesSet.has(firecoordinates)
+        ? new Set([...gameState.hitParts, firecoordinates])
         : gameState.hitParts;
 
       // If the positions of a ship are the subset of hit parts, mark the ship as sunk and save the positions
       // Do the search once instead of doing it everytime for each cell
-      const newSunkShipParts = getSunkShipPartsAccordions({
+      const newSunkShipCoordinates = getSunkShipCoordinates({
         shipInfo,
         hitParts: newHitParts,
       });
 
       return {
-        firedPosition: newFiredPosition,
+        firedCoordinates: newfiredCoordinates,
         hitParts: newHitParts,
-        sunkShipParts: newSunkShipParts,
+        sunkShipCoordinates: newSunkShipCoordinates,
       };
     }
     case "resetGame": {

@@ -2,7 +2,7 @@
 
 import { useGameState } from "@/hooks/use-game-state";
 import { colSize, rowSize } from "@/utilities/constants";
-import { stringifyAccordion } from "@/utilities/helpers";
+import { stringifyCoordinates } from "@/utilities/helpers";
 
 import { GameCell } from "./game-cell";
 
@@ -10,7 +10,7 @@ export function GameBoard() {
   const { isGamOver, resetGame } = useGameState();
   return isGamOver ? (
     <div className="flex aspect-square w-full max-w-full flex-col items-center justify-center gap-y-4 border-8 border-yellow bg-yellow sm:border-4 md:max-w-3xl">
-      <h1 className="text-6xl text-white">GameOver</h1>
+      <h1 className="text-6xl text-white">Game Over</h1>
       <button
         onClick={() => {
           resetGame();
@@ -26,7 +26,10 @@ export function GameBoard() {
       {Array.from({ length: colSize }).map((_col, x) => {
         return Array.from({ length: rowSize }).map((_row, y) => {
           return (
-            <GameCell key={stringifyAccordion({ x, y })} accordion={{ x, y }} />
+            <GameCell
+              key={stringifyCoordinates({ x, y })}
+              coordinates={{ x, y }}
+            />
           );
         });
       })}

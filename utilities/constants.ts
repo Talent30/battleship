@@ -1,4 +1,4 @@
-import { stringifyAccordion } from "./helpers";
+import { stringifyCoordinates } from "./helpers";
 
 export const rowSize = 10;
 export const colSize = 10;
@@ -57,8 +57,8 @@ export const { layout: shipInfo, shipTypes } = {
   ],
 } as const;
 
-export const shipsAccordionSet = new Set(
+export const shipsCoordinatesSet = new Set(
   shipInfo.flatMap((ship) =>
-    ship.positions.map(([x, y]) => stringifyAccordion({ x, y })),
+    ship.positions.map(([x, y]) => stringifyCoordinates({ x, y })),
   ),
 );

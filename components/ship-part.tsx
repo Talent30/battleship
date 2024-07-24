@@ -6,11 +6,11 @@ import part from "@/app/assets/Miss small.png";
 import { useShipPartState } from "@/hooks/use-ship-part-state";
 
 export function ShipPart({
-  partAccordion,
+  partcoordinates,
 }: {
-  partAccordion: { x: number; y: number };
+  partcoordinates: { x: number; y: number };
 }) {
-  const { isHit } = useShipPartState(partAccordion);
+  const { isHit } = useShipPartState(partcoordinates);
   return isHit ? (
     <Image
       className="size-3 sm:size-4"

@@ -5,7 +5,7 @@ import Image from "next/image";
 import hitMark from "@/app/assets/Hit.png";
 import missMark from "@/app/assets/Miss.png";
 import { useCellState } from "@/hooks/use-cell-state";
-import { stringifyAccordion } from "@/utilities/helpers";
+import { stringifyCoordinates } from "@/utilities/helpers";
 
 function CellMark({ gameCellState }: { gameCellState: GameCellState }) {
   if (gameCellState === "hit" || gameCellState === "sunk") {
@@ -18,9 +18,9 @@ function CellMark({ gameCellState }: { gameCellState: GameCellState }) {
 }
 
 export function GameCell({
-  accordion: { x, y },
+  coordinates: { x, y },
 }: {
-  accordion: { x: number; y: number };
+  coordinates: { x: number; y: number };
 }) {
   const { gameCellState, setFire } = useCellState({ x, y });
   const hoverStyle = gameCellState === "empty" ? "hover:bg-gray-200" : "";
@@ -29,7 +29,7 @@ export function GameCell({
   const sunkStyle = gameCellState === "sunk" ? "bg-red bg-opacity-30" : "";
   return (
     <button
-      id={stringifyAccordion({ x, y })}
+      id={stringifyCoordinates({ x, y })}
       onClick={() => {
         setFire({ x, y });
       }}

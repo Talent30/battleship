@@ -64,7 +64,7 @@ export function ShipStatusIndicator({ shipType }: { shipType: ShipType }) {
           .find(({ ship }) => ship === shipType)
           ?.positions.map(([x, y], index) => (
             <ShipPart
-              partAccordion={{ x, y }}
+              partcoordinates={{ x, y }}
               key={`${shipType}-part-${index.toString()}`}
             />
           ))}

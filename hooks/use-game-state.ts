@@ -1,6 +1,6 @@
 import { use } from "react";
 import { GameContext, GameDispatchContext } from "@/provider/game-context";
-import { shipsAccordionSet } from "@/utilities/constants";
+import { shipsCoordinatesSet } from "@/utilities/constants";
 import { areSetsEqual } from "@/utilities/helpers";
 
 export function useGameState() {
@@ -12,7 +12,7 @@ export function useGameState() {
     );
   }
 
-  const isGamOver = areSetsEqual(gameState.hitParts, shipsAccordionSet);
+  const isGamOver = areSetsEqual(gameState.hitParts, shipsCoordinatesSet);
 
   const resetGame = () => {
     dispatch({ type: "resetGame" });

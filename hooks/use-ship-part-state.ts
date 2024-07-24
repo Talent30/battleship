@@ -1,6 +1,6 @@
 import { use } from "react";
 import { GameContext } from "@/provider/game-context";
-import { stringifyAccordion } from "@/utilities/helpers";
+import { stringifyCoordinates } from "@/utilities/helpers";
 
 export function useShipPartState({ x, y }: { x: number; y: number }) {
   const gameState = use(GameContext);
@@ -10,12 +10,12 @@ export function useShipPartState({ x, y }: { x: number; y: number }) {
     );
   }
 
-  const accordion = stringifyAccordion({
+  const partCoordinates = stringifyCoordinates({
     x,
     y,
   });
 
-  const isHit = gameState.hitParts.has(accordion);
+  const isHit = gameState.hitParts.has(partCoordinates);
 
   return { isHit };
 }
