@@ -1,7 +1,7 @@
-export const rowSize = 10 as const;
-export const colSize = 10 as const;
+export const rowSize = 10;
+export const colSize = 10;
 
-export const shipLayout = {
+export const { layout: layoutInfo, shipTypes } = {
   shipTypes: {
     carrier: { size: 5, count: 1 },
     battleship: { size: 4, count: 1 },

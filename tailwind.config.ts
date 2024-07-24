@@ -1,8 +1,7 @@
 import type { Config } from "tailwindcss";
 
-const config: Config = {
+const config = {
   content: [
-    "./pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
@@ -11,9 +10,12 @@ const config: Config = {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+        border: "var(--border)",
+        green: "var(--green)",
+        yellow: "var(--yellow)",
       },
     },
   },
   plugins: [],
-};
+} satisfies Config;
 export default config;

@@ -22,6 +22,12 @@ declare module "eslint-plugin-unicorn" {
   export const rules: Record<string, Rule.RuleModule>;
 }
 
+declare module "eslint-plugin-react-compiler" {
+  import type { Rule } from "eslint";
+
+  export const rules: Record<string, Rule.RuleModule>;
+}
+
 declare module "eslint-plugin-react" {
   import type { Linter, Rule } from "eslint";
 
