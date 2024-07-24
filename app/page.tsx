@@ -5,7 +5,7 @@ import { ShipStatusIndicator } from "@/components/ship-status-indicator";
 export default function Home() {
   return (
     <div className="flex flex-row flex-wrap-reverse sm:gap-y-4 md:flex-nowrap md:gap-x-4 lg:gap-y-0">
-      <div className="flex basis-full flex-col gap-y-2 sm:flex-row-reverse md:basis-2/6 md:flex-col">
+      <div className="flex basis-full flex-col gap-y-2 sm:flex-row sm:gap-x-2 md:basis-2/6 md:flex-col">
         <div className="flex sm:border sm:border-border">
           <ScoreCard playerName="player 1" color="yellow" />
           <ScoreCard playerName="player 2" color="green" />
