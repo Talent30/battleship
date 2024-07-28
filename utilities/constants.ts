@@ -57,7 +57,7 @@ export const { layout: shipInfo, shipTypes } = {
   ],
 } as const;
 
-export const shipsCoordinatesSet = new Set(
+export const shipsCoordinatesSet: ReadonlySet<string> = new Set(
   shipInfo.flatMap((ship) =>
     ship.positions.map(([x, y]) => stringifyCoordinates({ x, y })),
   ),

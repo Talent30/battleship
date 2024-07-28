@@ -1,7 +1,7 @@
 import { use } from "react";
 import { GameContext, GameDispatchContext } from "@/provider/game-context";
 import { shipsCoordinatesSet } from "@/utilities/constants";
-import { isSuperset } from "@/utilities/helpers";
+import { isSuperSet } from "@/utilities/helpers";
 
 export function useGameState() {
   const gameState = use(GameContext);
@@ -12,7 +12,7 @@ export function useGameState() {
     );
   }
 
-  const isGamOver = isSuperset(gameState.firedCoordinates, shipsCoordinatesSet);
+  const isGamOver = isSuperSet(gameState.firedCoordinates, shipsCoordinatesSet);
 
   const resetGame = () => {
     dispatch({ type: "resetGame" });

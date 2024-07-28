@@ -9,8 +9,8 @@ import {
 } from "@/utilities/helpers";
 
 type GameState = {
-  readonly firedCoordinates: Set<string>;
-  readonly sunkShipCoordinates: Set<string>;
+  readonly firedCoordinates: ReadonlySet<string>;
+  readonly sunkShipCoordinates: ReadonlySet<string>;
 };
 
 type ActionType =

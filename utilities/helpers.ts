@@ -32,14 +32,9 @@ export function areSetsEqual<T>(a: ReadonlySet<T>, b: ReadonlySet<T>) {
   return a.size === b.size && [...a].every((value) => b.has(value));
 }
 
-export function isSuperset<T>(
+export function isSuperSet<T>(
   superSet: ReadonlySet<T>,
   subSet: ReadonlySet<T>,
 ) {
-  for (const element of subSet) {
-    if (!superSet.has(element)) {
-      return false;
-    }
-  }
-  return true;
+  return [...subSet].every((element) => superSet.has(element));
 }
